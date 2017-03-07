@@ -1,5 +1,3 @@
-package main.java;
-
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -14,7 +12,7 @@ public class Data {
      * @return scrambled ArrayList with integers in range 1..n
      */
     public ArrayList<Integer> generateSampleData(int n) {
-        ArrayList<Integer> newArrayList = new ArrayList<>(n);
+        ArrayList<Integer> newArrayList = new ArrayList<>();
         while(n > 0){
             newArrayList.add(n);
             n--;
