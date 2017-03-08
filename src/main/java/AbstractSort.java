@@ -1,3 +1,4 @@
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -5,14 +6,26 @@ import java.util.List;
  */
 public abstract class AbstractSort implements SortAlgorithm {
 
-    private List<Comparable> list;
+    /**
+     * Sorts the list using the standard library in Ascending order
+     * @param list to be sorted
+     * @return sorted list
+     */
+    @Override
+    public List<Comparable> sortAsc(List<Comparable> list) {
+        Collections.sort(list);
+        return list;
+    }
 
     /**
-     * Constructor that stores the list
-     * @param list The list that needs to be sorted
+     * Sorts the list using the standard library in Descending order
+     * @param list to be sorted
+     * @return sorted list
      */
-    AbstractSort(List<Comparable> list){
-        this.list = list;
+    @Override
+    public List<Comparable> sortDesc(List<Comparable> list) {
+        List<Comparable> sortedList = this.sortAsc(list);
+        Collections.reverse(sortedList);
+        return sortedList;
     }
-    
 }

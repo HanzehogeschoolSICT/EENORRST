@@ -5,6 +5,7 @@ import java.util.List;
  */
 public interface SortAlgorithm {
 
-    List<Comparable> sort();
+    List<Comparable> sortAsc(List<Comparable> list);
+    List<Comparable> sortDesc(List<Comparable> list);
     void step();
 }
