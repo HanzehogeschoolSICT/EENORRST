@@ -1,3 +1,5 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -20,13 +22,4 @@ public class Data {
         Collections.shuffle(newArrayList);
         return newArrayList;
     }
-
-    public static void main(String [] args) {
-        Data data = new Data();
-
-        System.out.println(data.generateSampleData(0));
-        System.out.println(data.generateSampleData(10));
-        System.out.println(data.generateSampleData(100));
-    }
-
 }
