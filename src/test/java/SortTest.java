@@ -27,7 +27,7 @@ public class SortTest {
             List<Integer> sortedlist = bubbleSort.sortAsc(testData);
             List<Integer> copy = new ArrayList<>(testData);
             Collections.sort(copy);
-            assertEquals(sortedlist, copy);
+            assertEquals(copy, sortedlist);
         } catch (Exception e) {
             e.printStackTrace();
         }
