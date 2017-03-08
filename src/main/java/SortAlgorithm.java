@@ -5,6 +5,6 @@ import java.util.List;
  */
 public interface SortAlgorithm {
 
-    <E extends Comparable<E>> List<E> sortAsc(List<E> list);
+    List<Integer> sortAsc(List<Integer> list);
     void step();
 }

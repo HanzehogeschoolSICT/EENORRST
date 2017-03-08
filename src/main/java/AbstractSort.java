@@ -12,7 +12,7 @@ public abstract class AbstractSort implements SortAlgorithm {
      * @return sorted list
      */
     @Override
-    public <E extends Comparable<E>> List<E> sortAsc(List<E> list) {
+    public List<Integer> sortAsc(List<Integer> list) {
         Collections.sort(list);
         return list;
     }
