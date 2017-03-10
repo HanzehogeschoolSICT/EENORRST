@@ -25,7 +25,7 @@ public class Client extends Application {
      */
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle(applicationTitle);
-        VBox mainViewLoader = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
+        Pane mainViewLoader = FXMLLoader.load(getClass().getClassLoader().getResource("mainView.fxml"));
 
         // Load the file in the scene and display scene.
         Scene scene = new Scene(mainViewLoader);

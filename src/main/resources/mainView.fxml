@@ -1,10 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
-<VBox fx:controller="controller.MainViewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <Button fx:id="button1" mnemonicParsing="false" onAction="#handleButton1Action" text="Click me!" />
-   </children>
-</VBox>
+<BorderPane fx:controller="controller.MainViewController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1">
+   <left>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sorting algorithms" />
+            <Button mnemonicParsing="false" onAction="#startBubbleSort" text="BubbleSort" />
+         </children>
+      </VBox>
+   </left>
+   <center>
+      <BarChart fx:id="displayChart" alternativeColumnFillVisible="true" BorderPane.alignment="CENTER">
+        <xAxis>
+          <CategoryAxis side="BOTTOM" />
+        </xAxis>
+        <yAxis>
+          <NumberAxis side="LEFT" />
+        </yAxis>
+      </BarChart>
+   </center>
+   <bottom>
+      <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="Sort" />
+            <Button mnemonicParsing="false" text="Step" />
+            <Button mnemonicParsing="false" text="Shuffle" />
+         </children></HBox>
+   </bottom>
+</BorderPane>
