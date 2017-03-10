@@ -1,13 +1,13 @@
 package controller;
 
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
-import javafx.scene.chart.BarChart;
-import javafx.scene.chart.XYChart;
-import javafx.scene.control.Button;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.paint.Color;
 import model.Data;
+import sort.BubbleSort;
+import sort.SortAlgorithm;
 
-import java.util.Collections;
 import java.util.List;
 
 /**
@@ -16,29 +16,42 @@ import java.util.List;
 public class MainViewController {
 
     @FXML
-    private BarChart displayChart;
+    private Canvas drawCanvas;
+
+    private SortAlgorithm sortAlgorithm;
 
     @FXML
     public void startBubbleSort(){
-        displayChart.getData().clear();
-        List<Integer> generatedList = new Data().generateSampleData(10);
+        List<Integer> generatedList = new Data().generateSampleData(50);
+        sortAlgorithm = new BubbleSort();
+
+        //generatedList = sortAlgorithm.sortAsc(generatedList);
         updateGraph(generatedList);
-
     }
 
-    @FXML
-    public void updateGraph(List<Integer> list){
+    /**
+     * Draws the current array on a canvas, to visualise the sorting algorithm
+     * @param list to be drawn on the canvas
+     */
+    private void updateGraph(List<Integer> list){
+        GraphicsContext gc = drawCanvas.getGraphicsContext2D();
 
-        BarChart.Series<String, Number> series = new XYChart.Series<>();
+        double canvasHeight = drawCanvas.getHeight();
+        double canvasWidth = drawCanvas.getWidth();
+        double spacing = canvasWidth * 0.1 / list.size();
+        double elemWidth = canvasWidth / list.size(); // Same for every element
+        double elemHeight = canvasHeight / list.size();
+        int currentElem = 0;
 
-        Integer i = 0;
-        for (Integer item : list) {
-            System.out.println(item);
-            series.getData().add(new BarChart.Data<>(i.toString(), item));
-            i++;
+        gc.clearRect(0,0, canvasWidth, canvasHeight);
+        gc.setFill(Color.BLUE);
+
+        for (Integer elem : list) {
+            double currentElemStartX = elemWidth * currentElem;
+            double currentElemHeight = elemHeight * elem;
+            double currentElemStartY = canvasHeight - currentElemHeight;
+            gc.fillRect(currentElemStartX, currentElemStartY, elemWidth - spacing, currentElemHeight);
+            currentElem++;
         }
-
-        displayChart.getData().add(series);
     }
-
 }
