@@ -22,7 +22,6 @@ public class InsertionSort extends AbstractSort{
         }
 
         int currentElem = list.get(position);
-        System.out.println(position);
 
         for (int i = 0; i < position; i++) {
             if (currentElem < list.get(i)){
