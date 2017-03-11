@@ -47,7 +47,7 @@ public class BubbleSort extends AbstractSort {
         }
         return false;
     }
-    
+
     /**
      * Loops the sort method till true, then returns the sorted list
      * @return the sorted list
