@@ -7,6 +7,8 @@ import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+import model.Data;
+import sort.InsertionSort;
 
 /**
  * Starting point of the application, loads and launches javaFX
