@@ -19,7 +19,7 @@ public interface SortAlgorithm {
     List<Integer> getList();
 
     /**
-     * Sorts list in ascending order
+     * Sorts list in ascending order, with the implemented algorithm in the sort method.
      * @return sorted list in ascending order.
      */
     List<Integer> sortFull();
