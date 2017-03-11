@@ -7,6 +7,7 @@ import java.util.List;
  */
 public interface SortAlgorithm {
 
-    List<Integer> sortAsc(List<Integer> list);
+    boolean sort();
+    List<Integer> getList();
     void step();
 }

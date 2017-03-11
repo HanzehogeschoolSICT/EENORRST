@@ -10,12 +10,11 @@ public abstract class AbstractSort implements SortAlgorithm {
 
     /**
      * Sorts the list using the standard library in Ascending order
-     * @param list to be sorted
      * @return sorted list
      */
     @Override
-    public List<Integer> sortAsc(List<Integer> list) {
-        Collections.sort(list);
-        return list;
+    public boolean sort() {
+//        Collections.sort(list);
+        return true;
     }
 }

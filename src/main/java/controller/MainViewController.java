@@ -22,10 +22,9 @@ public class MainViewController {
 
     @FXML
     public void startBubbleSort(){
-        List<Integer> generatedList = new Data().generateSampleData(50);
-        sortAlgorithm = new BubbleSort();
+        List<Integer> generatedList = new Data().generateSampleData(15);
+        sortAlgorithm = new BubbleSort(generatedList);
 
-        //generatedList = sortAlgorithm.sortAsc(generatedList);
         updateGraph(generatedList);
     }
 
@@ -53,5 +52,11 @@ public class MainViewController {
             gc.fillRect(currentElemStartX, currentElemStartY, elemWidth - spacing, currentElemHeight);
             currentElem++;
         }
+    }
+
+    @FXML
+    public void nextStep() {
+        sortAlgorithm.sort();
+        updateGraph(sortAlgorithm.getList());
     }
 }

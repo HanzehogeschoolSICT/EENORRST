@@ -20,7 +20,7 @@
       <HBox alignment="CENTER_RIGHT" prefHeight="43.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
             <Button mnemonicParsing="false" text="Sort" />
-            <Button mnemonicParsing="false" text="Step" />
+            <Button mnemonicParsing="false" onAction="#nextStep" text="Step" />
             <Button mnemonicParsing="false" text="Shuffle" />
          </children></HBox>
    </bottom>
