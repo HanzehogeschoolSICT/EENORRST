@@ -8,13 +8,24 @@ import java.util.List;
  */
 public abstract class AbstractSort implements SortAlgorithm {
 
+    // holds the current list.
+    List<Integer> list;
+
     /**
-     * Sorts the list using the standard library in Ascending order
-     * @return sorted list
+     * Places list in field, so every subclass works with a state.
+     * @param list to store.
+     */
+    AbstractSort(List<Integer> list){
+        this.list = list;
+    }
+
+    /**
+     * Sorts the list using the standard library
+     * @return the sorted list
      */
     @Override
-    public boolean sort() {
-//        Collections.sort(list);
-        return true;
+    public List<Integer> sortFull() {
+        Collections.sort(list);
+        return list;
     }
 }

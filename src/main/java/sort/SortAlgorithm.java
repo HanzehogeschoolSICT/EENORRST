@@ -7,7 +7,20 @@ import java.util.List;
  */
 public interface SortAlgorithm {
 
+    /**
+     * Executes one step in the sorting algorithm, different for each algorithm
+     * @return false if there are more steps to be executed, true if the list is sorted.
+     */
     boolean sort();
+
+    /**
+     * @return Returns the list in the current state, sorted or not sorted.
+     */
     List<Integer> getList();
-    void step();
+
+    /**
+     * Sorts list in ascending order
+     * @return sorted list in ascending order.
+     */
+    List<Integer> sortFull();
 }

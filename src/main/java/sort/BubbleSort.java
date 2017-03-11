@@ -7,16 +7,15 @@ import java.util.List;
  */
 public class BubbleSort extends AbstractSort {
 
-    private List<Integer> list;
     private int currentPos;
     private int currentLength;
 
     /**
-     * Creates a new BubbleSort object
+     * Creates a new BubbleSort object, Defines list in the abstract superclass
      * @param list that needs to be sorted
      */
     public BubbleSort(List<Integer> list){
-        this.list = list;
+        super(list);
         currentLength = list.size();
         currentPos = 0;
     }
@@ -44,21 +43,27 @@ public class BubbleSort extends AbstractSort {
         } else {
             currentPos = 0;
             currentLength--;
-            sort(); // To speed up the visualisation
+            sort(); // skip reset moves
         }
         return false;
     }
 
     /**
-     * @return The current list
+     * @return The list in the current state.
      */
     @Override
     public List<Integer> getList() {
         return list;
     }
 
+    /**
+     * Loops the sort method till true, then returns the sorted list
+     * @return the sorted list
+     */
     @Override
-    public void step() {
-        return;
+    public List<Integer> sortFull() {
+        while(!sort()){
+        }
+        return getList();
     }
 }
