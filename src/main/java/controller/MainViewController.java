@@ -59,4 +59,10 @@ public class MainViewController {
         sortAlgorithm.sort();
         updateGraph(sortAlgorithm.getList());
     }
+
+    @FXML
+    public void runFull() {
+        sortAlgorithm.sortFull();
+        updateGraph(sortAlgorithm.getList());
+    }
 }
