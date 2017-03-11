@@ -28,4 +28,12 @@ public abstract class AbstractSort implements SortAlgorithm {
         Collections.sort(list);
         return list;
     }
+
+    /**
+     * @return the list in the current state
+     */
+    @Override
+    public List<Integer> getList(){
+        return list;
+    }
 }

@@ -47,15 +47,7 @@ public class BubbleSort extends AbstractSort {
         }
         return false;
     }
-
-    /**
-     * @return The list in the current state.
-     */
-    @Override
-    public List<Integer> getList() {
-        return list;
-    }
-
+    
     /**
      * Loops the sort method till true, then returns the sorted list
      * @return the sorted list

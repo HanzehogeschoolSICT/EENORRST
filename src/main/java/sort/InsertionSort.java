@@ -35,11 +35,6 @@ public class InsertionSort extends AbstractSort{
     }
 
     @Override
-    public List<Integer> getList() {
-        return list;
-    }
-
-    @Override
     public List<Integer> sortFull() {
         return super.sortFull();
     }
