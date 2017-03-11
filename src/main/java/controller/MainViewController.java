@@ -9,6 +9,7 @@ import sort.BubbleSort;
 import sort.SortAlgorithm;
 
 import java.util.List;
+import java.util.concurrent.Executors;
 
 /**
  * Controller for the main selection menu
@@ -60,9 +61,26 @@ public class MainViewController {
         updateGraph(sortAlgorithm.getList());
     }
 
+    /**
+     * Sorts with a delay of 100 ms per step
+     * TODO: in different class
+     */
     @FXML
     public void runFull() {
-        sortAlgorithm.sortFull();
-        updateGraph(sortAlgorithm.getList());
+        Executors.newSingleThreadExecutor().execute(new Runnable() {
+            @Override
+            public void run() {
+                synchronized (sortAlgorithm) {
+                    while (!sortAlgorithm.sort()) {
+                        updateGraph(sortAlgorithm.getList());
+                        try {
+                            Thread.sleep(100);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                    }
+                }
+            }
+        });
     }
 }
