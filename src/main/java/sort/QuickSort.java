@@ -7,11 +7,20 @@ import java.util.*;
 /**
  * Created by georg on 11-Mar-17.
  */
-public class QuickSort {
+public class QuickSort extends AbstractSort{
 
     private Stack<Integer> stack = new Stack();
     private List<Integer> list;
 
+    QuickSort(List<Integer> list) {
+        super(list);
+        int start = 0;
+        int end = list.size();
+
+        // Add first sort to the stack
+        stack.add(end);
+        stack.add(start);
+    }
 
     public boolean sort() {
         if (stack.isEmpty()){
@@ -27,12 +36,10 @@ public class QuickSort {
             stack.add(sorted);
             stack.add(start);
         }
-
         if ((sorted+2) < end) {
             stack.add(end);
             stack.add(sorted+1);
         }
-
         return false;
     }
 
@@ -55,17 +62,5 @@ public class QuickSort {
         int tempValue = list.get(pos1);
         list.set(pos1, list.get(pos2));
         list.set(pos2, tempValue);
-    }
-
-
-
-    QuickSort(List<Integer> list) {
-        this.list = list;
-        int start = 0;
-        int end = list.size();
-
-        // Add first sort to the stack
-        stack.add(end);
-        stack.add(start);
     }
 }
