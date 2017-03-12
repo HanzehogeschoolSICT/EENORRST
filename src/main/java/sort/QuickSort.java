@@ -10,9 +10,8 @@ import java.util.*;
 public class QuickSort extends AbstractSort{
 
     private Stack<Integer> stack = new Stack();
-    private List<Integer> list;
 
-    QuickSort(List<Integer> list) {
+    public QuickSort(List<Integer> list) {
         super(list);
         int start = 0;
         int end = list.size();
@@ -32,14 +31,16 @@ public class QuickSort extends AbstractSort{
 
         int sorted = partition(start, end, start);
 
-        if (start < (sorted-1)) {
-            stack.add(sorted);
-            stack.add(start);
-        }
         if ((sorted+2) < end) {
             stack.add(end);
             stack.add(sorted+1);
         }
+
+        if (start < (sorted-1)) {
+            stack.add(sorted);
+            stack.add(start);
+        }
+
         return false;
     }
 

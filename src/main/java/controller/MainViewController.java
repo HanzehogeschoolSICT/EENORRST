@@ -7,6 +7,7 @@ import javafx.scene.paint.Color;
 import model.Data;
 import sort.BubbleSort;
 import sort.InsertionSort;
+import sort.QuickSort;
 import sort.SortAlgorithm;
 
 import java.util.List;
@@ -34,6 +35,14 @@ public class MainViewController {
     public void startInsertionSort(){
         List<Integer> generatedList = new Data().generateSampleData(100);
         sortAlgorithm = new InsertionSort(generatedList);
+
+        updateGraph(generatedList);
+    }
+
+    @FXML
+    public void startQuickSort(){
+        List<Integer> generatedList = new Data().generateSampleData(100);
+        sortAlgorithm = new QuickSort(generatedList);
 
         updateGraph(generatedList);
     }
