@@ -3,13 +3,16 @@ package controller;
 import javafx.fxml.FXML;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
+import javafx.scene.control.Slider;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
 import model.Data;
 import sort.BubbleSort;
 import sort.InsertionSort;
 import sort.QuickSort;
 import sort.SortAlgorithm;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.Executors;
 
@@ -21,30 +24,53 @@ public class MainViewController {
     @FXML
     private Canvas drawCanvas;
 
+    @FXML
+    private Slider sampleSizeSlider;
+
+
     private SortAlgorithm sortAlgorithm;
+    private Data data;
+    private List<Integer> generatedList;
+
+    @FXML
+    public void initialize(){
+        data = new Data();
+        generateRandom();
+    }
+
+    @FXML
+    public void generateRandom(){
+        generatedList = data.generateRandomData((int) sampleSizeSlider.getValue());
+        sortAlgorithm = new BubbleSort(generatedList);
+        updateGraph(generatedList);
+    }
+
+    @FXML
+    public void generateReversed(){
+        generatedList = data.generateReversedData((int) sampleSizeSlider.getValue());
+        sortAlgorithm = new BubbleSort(generatedList);
+        updateGraph(generatedList);
+    }
 
     @FXML
     public void startBubbleSort(){
-        List<Integer> generatedList = new Data().generateSampleData(100);
-        sortAlgorithm = new BubbleSort(generatedList);
-
-        updateGraph(generatedList);
+        List<Integer> copy = new ArrayList<>(generatedList);
+        sortAlgorithm = new BubbleSort(copy);
+        updateGraph(copy);
     }
 
     @FXML
     public void startInsertionSort(){
-        List<Integer> generatedList = new Data().generateSampleData(100);
-        sortAlgorithm = new InsertionSort(generatedList);
-
-        updateGraph(generatedList);
+        List<Integer> copy = new ArrayList<>(generatedList);
+        sortAlgorithm = new InsertionSort(copy);
+        updateGraph(copy);
     }
 
     @FXML
     public void startQuickSort(){
-        List<Integer> generatedList = new Data().generateSampleData(100);
-        sortAlgorithm = new QuickSort(generatedList);
-
-        updateGraph(generatedList);
+        List<Integer> copy = new ArrayList<>(generatedList);
+        sortAlgorithm = new QuickSort(copy);
+        updateGraph(copy);
     }
 
     /**

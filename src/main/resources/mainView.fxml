@@ -2,9 +2,12 @@
 
 <?import javafx.scene.canvas.Canvas?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="488.0" prefWidth="715.0" xmlns="http://javafx.com/javafx/8.0.112" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.MainViewController">
    <left>
@@ -17,11 +20,22 @@
       </VBox>
    </left>
    <bottom>
-      <HBox alignment="CENTER_RIGHT" prefHeight="32.0" prefWidth="715.0" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="32.0" prefWidth="715.0" BorderPane.alignment="CENTER">
          <children>
-            <Button mnemonicParsing="false" text="Previous step" />
-            <Button mnemonicParsing="false" onAction="#nextStep" text="Next Step" />
-            <Button mnemonicParsing="false" onAction="#runFull" text="Run" />
+            <HBox alignment="CENTER_LEFT" prefHeight="33.0" prefWidth="336.0">
+               <children>
+                  <Slider fx:id="sampleSizeSlider" majorTickUnit="100.0" max="500.0" min="10.0" minorTickCount="50" showTickLabels="true" value="100.0" />
+                  <Separator orientation="VERTICAL" prefHeight="33.0" prefWidth="16.0" />
+                  <Button mnemonicParsing="false" onAction="#generateRandom" text="Random" />
+                  <Button mnemonicParsing="false" onAction="#generateReversed" text="Reverse sorted" />
+               </children></HBox>
+            <Separator orientation="VERTICAL" prefHeight="33.0" prefWidth="169.0" />
+            <HBox alignment="CENTER_RIGHT" prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#nextStep" text="Next Step" />
+                  <Button mnemonicParsing="false" onAction="#runFull" text="Run" />
+               </children>
+            </HBox>
          </children></HBox>
    </bottom>
    <center>

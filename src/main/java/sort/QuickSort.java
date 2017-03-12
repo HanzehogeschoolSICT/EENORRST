@@ -2,7 +2,9 @@ package sort;
 
 import java.util.*;
 
-
+/**
+ * Iterative variant of the QuickSort algorithm
+ */
 public class QuickSort extends AbstractSort{
 
     private Stack<Integer> stack = new Stack<>();
@@ -32,7 +34,7 @@ public class QuickSort extends AbstractSort{
         int start = stack.pop();
         int end = stack.pop();
 
-        int sortedPoint = partition(start, end, start);
+        int sortedPoint = partition(start, end, start); // Picks the first element as pivot TODO: random pivot
         addToStack(start, end, sortedPoint);
 
         return false;
@@ -58,7 +60,9 @@ public class QuickSort extends AbstractSort{
     /**
      * Partitions the array according to Hoares partitioning scheme,
      * Places everything smaller than the pivot on the left of the pivot
-     * Everything equal or bigger than the pivot gets placed on the right
+     * Everything equal or bigger than the pivot gets placed on the right.
+     * With knowledge/help from:
+     * http://me.dt.in.th/page/Quicksort/
      * @param si start position
      * @param ei end position
      * @param pivot the chosen pivot

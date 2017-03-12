@@ -1,5 +1,4 @@
 import model.Data;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import sort.BubbleSort;
 import sort.SortAlgorithm;
@@ -24,7 +23,7 @@ public class SortTest {
      */
     @Test
     public void testBubbleSort(){
-        List<Integer> testData = new Data().generateSampleData(sampleSize);
+        List<Integer> testData = new Data().generateData(sampleSize);
         SortAlgorithm sortAlgorithm = new BubbleSort(testData);
 
         try {

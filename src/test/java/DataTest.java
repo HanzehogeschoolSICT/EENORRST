@@ -27,11 +27,11 @@ public class DataTest {
             ArrayList<Integer> EmptyList = new ArrayList<>();
 
             // n = 0
-            ArrayList<Integer> ZeroN = data.generateSampleData(0);
+            ArrayList<Integer> ZeroN = data.generateData(0);
             assertEquals(EmptyList, ZeroN);
 
             // n = -1 Should also be empty
-            ArrayList<Integer> NegativeN = data.generateSampleData(-1);
+            ArrayList<Integer> NegativeN = data.generateData(-1);
             assertEquals(EmptyList, NegativeN);
         } catch (Exception e) {
             e.printStackTrace();
@@ -52,13 +52,13 @@ public class DataTest {
             sampleArray.add(4);
             sampleArray.add(5);
 
-            ArrayList<Integer> sample = data.generateSampleData(5);
+            ArrayList<Integer> sample = data.generateData(5);
             Collections.sort(sample); //Sorting because generated data is shuffled
             assertEquals(sampleArray, sample);
 
             int bigSize = 10000;
             // Test the size of the big sample
-            ArrayList<Integer> bigSample = data.generateSampleData(bigSize);
+            ArrayList<Integer> bigSample = data.generateData(bigSize);
             assertEquals(bigSize, bigSample.size());
         } catch (Exception e) {
             e.printStackTrace();
