@@ -9,50 +9,63 @@ import java.util.*;
  */
 public class QuickSort {
 
-    private Random rand = new Random();
-    private List list;
+    private Stack<Integer> stack = new Stack();
+    private List<Integer> list;
 
 
-    public List<Integer> sort(List<Integer> list) {
-
-        if (list.size() <= 1) {
-            return list;
+    public boolean sort() {
+        if (stack.isEmpty()){
+            return true;
         }
 
-        int pivotPos = rand.nextInt(list.size());
-        int pivot = list.get(pivotPos);
-        int currentPos = 0;
-        List<Integer> smallList = new LinkedList<>();
-        List<Integer> bigList = new LinkedList<>();
-        List<Integer> newList = new LinkedList<>();
+        int start = stack.pop();
+        int end = stack.pop();
 
-        while(currentPos < list.size()) {
-            int currentElem = list.get(currentPos);
-            if (currentPos == pivotPos) {
-                currentPos++;
-                continue;
-            }
-            if (currentElem < pivot) {
-                smallList.add(currentElem);
-            }
-            else {
-                bigList.add(currentElem);
-            }
-            currentPos++;
+        int sorted = partition(start, end, start);
+
+        if (start < (sorted-1)) {
+            stack.add(sorted);
+            stack.add(start);
         }
 
-        newList.add(pivot);
-        newList.addAll(sort(bigList));
-        newList.addAll(0, sort(smallList));
-        return newList;
+        if ((sorted+2) < end) {
+            stack.add(end);
+            stack.add(sorted+1);
+        }
+
+        return false;
     }
 
-    QuickSort() {
+    private int partition(int si, int ei, int pivot) {
+        swap(pivot, si);
+        pivot = si;
+        int pos = pivot+1;
+        while (si < ei){
+            if (list.get(si) < list.get(pivot)){
+                swap(si, pos);
+                pos++;
+            }
+            si++;
+        }
+        swap(pivot, (pos - 1));
+        return (pos-1);
     }
 
-    public static void main(String [] args){
-        List<Integer> list = new Data().generateSampleData(100);
+    private void swap(int pos1, int pos2){
+        int tempValue = list.get(pos1);
+        list.set(pos1, list.get(pos2));
+        list.set(pos2, tempValue);
+    }
 
-        System.out.println(new QuickSort().sort(list));
+
+
+    QuickSort(List<Integer> list) {
+        this.list = list;
+        int start = 0;
+        int end = list.size();
+
+        // Add first sort to the stack
+        stack.add(end);
+        stack.add(start);
     }
 }
