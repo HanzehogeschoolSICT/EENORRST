@@ -1,16 +1,16 @@
 package sort;
 
-import model.Data;
-
 import java.util.*;
 
-/**
- * Created by georg on 11-Mar-17.
- */
+
 public class QuickSort extends AbstractSort{
 
-    private Stack<Integer> stack = new Stack();
+    private Stack<Integer> stack = new Stack<>();
 
+    /**
+     * Constructor, calculates the initial start and end positions and adds them to a stack.
+     * @param list to be sorted
+     */
     public QuickSort(List<Integer> list) {
         super(list);
         int start = 0;
@@ -21,29 +21,49 @@ public class QuickSort extends AbstractSort{
         stack.add(start);
     }
 
+    /**
+     * Executes one step in the QuickSort algorithm
+     * @return true if the list is sorted, false if there are more steps to be executed.
+     */
     public boolean sort() {
         if (stack.isEmpty()){
             return true;
         }
-
         int start = stack.pop();
         int end = stack.pop();
 
-        int sorted = partition(start, end, start);
-
-        if ((sorted+2) < end) {
-            stack.add(end);
-            stack.add(sorted+1);
-        }
-
-        if (start < (sorted-1)) {
-            stack.add(sorted);
-            stack.add(start);
-        }
+        int sortedPoint = partition(start, end, start);
+        addToStack(start, end, sortedPoint);
 
         return false;
     }
 
+    /**
+     * Adds sub positions to the stack
+     * @param start start point
+     * @param end end point
+     * @param sortedPoint pivot that is sorted
+     */
+    private void addToStack(int start, int end, int sortedPoint) {
+        if ((sortedPoint+2) < end) {
+            stack.add(end);
+            stack.add(sortedPoint+1);
+        }
+        if (start < (sortedPoint-1)) {
+            stack.add(sortedPoint);
+            stack.add(start);
+        }
+    }
+
+    /**
+     * Partitions the array according to Hoares partitioning scheme,
+     * Places everything smaller than the pivot on the left of the pivot
+     * Everything equal or bigger than the pivot gets placed on the right
+     * @param si start position
+     * @param ei end position
+     * @param pivot the chosen pivot
+     * @return position of sorted pivot
+     */
     private int partition(int si, int ei, int pivot) {
         swap(pivot, si);
         pivot = si;
@@ -59,6 +79,12 @@ public class QuickSort extends AbstractSort{
         return (pos-1);
     }
 
+
+    /**
+     * Swaps two values in the list
+     * @param pos1 position 1 to swap
+     * @param pos2 position 2 to swap
+     */
     private void swap(int pos1, int pos2){
         int tempValue = list.get(pos1);
         list.set(pos1, list.get(pos2));
