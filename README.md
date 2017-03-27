@@ -2,9 +2,10 @@
 
 [![BCH compliance](https://bettercodehub.com/edge/badge/HanzehogeschoolSICT/EENORRST)](https://bettercodehub.com/)
 
-
 OOP3 Sorting visualisation,
 Georg Groenendaal 2E
+
+![image](https://cloud.githubusercontent.com/assets/2457964/23833230/05f8e458-0743-11e7-8429-44a81732c855.png)
 
 ### Features
 - BubbleSort
