@@ -2,21 +2,23 @@ package model;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class Data {
+
+    private List<Integer> generatedData = new ArrayList<>();
 
     /**
      * Creates a ArrayList of  Real Integers between range 1..n (inclusive) in order
      * @param n Last number of the array
      * @return scrambled ArrayList with integers in range 1..n
      */
-    public ArrayList<Integer> generateData(int n) {
+    private ArrayList<Integer> generateData(int n) {
         ArrayList<Integer> newArrayList = new ArrayList<>();
         while(n > 0){
             newArrayList.add(n);
             n--;
         }
-        Collections.reverse(newArrayList);
         return newArrayList;
     }
 
@@ -25,11 +27,8 @@ public class Data {
      * @param n Last number of the array
      * @return scrambled ArrayList with integers in range 1..n
      */
-    public ArrayList<Integer> generateReversedData(int n) {
-        ArrayList<Integer> newArrayList =  generateData(n);
-
-        Collections.reverse(newArrayList);
-        return newArrayList;
+    public void generateReversedData(int n) {
+        generatedData = generateData(n);
     }
 
     /**
@@ -37,9 +36,13 @@ public class Data {
      * @param n Last number of the array
      * @return scrambled ArrayList with integers in range 1..n
      */
-    public ArrayList<Integer> generateRandomData(int n) {
+    public void generateRandomData(int n) {
         ArrayList<Integer> newArrayList =  generateData(n);
         Collections.shuffle(newArrayList);
-        return newArrayList;
+        generatedData = newArrayList;
+    }
+
+    public List<Integer> getGeneratedData() {
+        return generatedData;
     }
 }

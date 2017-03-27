@@ -23,12 +23,13 @@ public class SortTest {
      */
     @Test
     public void testBubbleSort(){
-        List<Integer> testData = new Data().generateData(sampleSize);
-        SortAlgorithm sortAlgorithm = new BubbleSort(testData);
+        Data testData = new Data();
+        testData.generateRandomData(sampleSize);
+        SortAlgorithm sortAlgorithm = new BubbleSort(testData.getGeneratedData());
 
         try {
             List<Integer> sortedlist = sortAlgorithm.sortFull();
-            List<Integer> copy = new ArrayList<>(testData);
+            List<Integer> copy = new ArrayList<>(testData.getGeneratedData());
             Collections.sort(copy);
             assertEquals(copy, sortedlist);
         } catch (Exception e) {

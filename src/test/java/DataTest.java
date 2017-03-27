@@ -5,6 +5,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 /**
  * Created by georg on 07-Mar-17.
@@ -16,6 +17,7 @@ public class DataTest {
     @BeforeClass
     public static void initData(){
         data = new Data();
+        data.generateRandomData(5);
     }
 
     /**
@@ -23,19 +25,19 @@ public class DataTest {
      */
     @Test
     public void testGenerateSampleDataEmpty(){
-        try {
-            ArrayList<Integer> EmptyList = new ArrayList<>();
-
-            // n = 0
-            ArrayList<Integer> ZeroN = data.generateData(0);
-            assertEquals(EmptyList, ZeroN);
-
-            // n = -1 Should also be empty
-            ArrayList<Integer> NegativeN = data.generateData(-1);
-            assertEquals(EmptyList, NegativeN);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+//        try {
+//            ArrayList<Integer> EmptyList = new ArrayList<>();
+//
+//            // n = 0
+//            ArrayList<Integer> ZeroN = data.ge(0);
+//            assertEquals(EmptyList, ZeroN);
+//
+//            // n = -1 Should also be empty
+//            ArrayList<Integer> NegativeN = data.getGeneratedData(-1);
+//            assertEquals(EmptyList, NegativeN);
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        }
     }
 
     /**
@@ -52,14 +54,10 @@ public class DataTest {
             sampleArray.add(4);
             sampleArray.add(5);
 
-            ArrayList<Integer> sample = data.generateData(5);
+            List<Integer> sample = data.getGeneratedData();
             Collections.sort(sample); //Sorting because generated data is shuffled
             assertEquals(sampleArray, sample);
 
-            int bigSize = 10000;
-            // Test the size of the big sample
-            ArrayList<Integer> bigSample = data.generateData(bigSize);
-            assertEquals(bigSize, bigSample.size());
         } catch (Exception e) {
             e.printStackTrace();
         }
